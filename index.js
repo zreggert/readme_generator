@@ -5,6 +5,8 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 
 const generateMarkdown = require('./utils/generateMarkdown.js')
+
+// const renderLicenseBadge = require('./utils/generateMarkdown.js')
 // TODO: Create an array of questions for user input
 
 const questions = [
@@ -30,7 +32,7 @@ const questions = [
     },
     {
         type: 'input',
-        message: 'What are the contribution guidelines for your project?',
+        message: 'Who contributed to this project?',
         name: 'contribution',
     },
     {
@@ -39,9 +41,15 @@ const questions = [
         name: 'test',
     },
     {
-        type: 'input',
+        type: 'list',
         message: 'What licenses does your application have?',
         name: 'license',
+        choices: [
+            'MIT',
+            'BSD3',
+            'EPL',
+            'GPLv3',
+        ]
     },
     {
         type: 'input',
@@ -58,8 +66,9 @@ const questions = [
 const askQuestions = () => {
     inquirer.prompt(questions)
     .then((data) => {
-        const fileName = `${data.title}.md`;
+        const fileName = `${data.title.toLowerCase().split(' ').join('-')}.md`;
 
+        //renderLicenseBadge(data);
         writeToFile(fileName, data);
     });
     
@@ -73,6 +82,10 @@ function writeToFile(fileName, data) {
     );
 };
 
+// function renderLicenseInfo(data) {
+//     renderLicenseBadge(license);
+// }
+
 // TODO: Create a function to initialize app
 function init() {
     askQuestions();
@@ -80,3 +93,4 @@ function init() {
 
 // Function call to initialize app
 init();
+
