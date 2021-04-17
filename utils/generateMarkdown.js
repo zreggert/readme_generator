@@ -69,7 +69,7 @@ function generateMarkdown(data) {
 
   -[Tests](#tests)
 
-  -[Questions]($questions)
+  -[Questions](#questions)
 
 
   ## Installation
