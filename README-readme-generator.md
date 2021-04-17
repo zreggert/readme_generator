@@ -47,3 +47,7 @@
   Also please check out this application's repo and my other work at:
   https://github.com/zreggert
 
+  ![screenshot of the questions prompted](./assets/generator-questions.png)
+  ![screenshot of the preview of the readme](./assets/readme-preview.png)
+  
+
